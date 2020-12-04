@@ -3,8 +3,6 @@ import {Text, View, StyleSheet, TouchableOpacity, Dimensions } from 'react-nativ
 import YoutubePlayer from 'react-native-youtube-iframe';
 import ScreenOrientation from 'expo-screen-orientation';
 
-
-
 const App = () => {
 
   async function changeScreenOrientation() {
@@ -136,6 +134,7 @@ const App = () => {
 
       <View style={styles.videoContainer}>
       <YoutubePlayer
+        webviewstyle={{width: 600}}
         height={screen_heigth}
         ref={playerRef}
         videoId={'BgAvqXcPxoM'}
@@ -167,13 +166,20 @@ const screen_heigth = Dimensions.get("window").height;
 
 
 const styles = StyleSheet.create({
+interactivityContainer: {
+    transform: [{ rotate: "-90deg" }, {translateX: -170}, {translateY: -170}],
+    height: screen_width - 20,
+    width: screen_heigth - 20,
+    top: 0,
+    backgroundColor: "black"
+},
   answers: {
-    marginTop: 100,
     color: "white",
     flexWrap: "wrap",
     flexDirection:"row",
     justifyContent:"space-around",
-    width: screen_width,
+    width: screen_heigth - 20,
+    position: "absolute",
   },
   response: {
     color: "white",
@@ -182,12 +188,10 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 7,
     opacity: 0.7,
-    zIndex: 99,
-    position: "absolute",
   },
-  interactivityContainer: {
-    marginTop: 44,
-    backgroundColor: "pink",
-    position: "relative"
-  }
+  // interactivityContainer: {
+  //   marginTop: 44,
+  //   backgroundColor: "pink",
+  //   position: "relative",
+  // },
 })
